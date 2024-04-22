@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Database</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Movie Database</h1>
+        
+        <!-- Drag and Drop Zone -->
+        <div id="dragDropZone" class="drag-drop-zone">
+            Drag & Drop Movie File Here
+        </div>
+        
+        <!-- Form to add new movie -->
+        <form id="addMovieForm">
+            <input type="text" id="movieName" placeholder="Enter movie name" required>
+            <input type="number" id="movieYear" placeholder="Enter year of release" required>
+            <input type="number" id="movieRuntime" placeholder="Enter runtime (minutes)" required>
+            <input type="text" id="movieFilepath" placeholder="Enter filepath" required>
+            <button type="submit">Add Movie</button>
+        </form>
+
+        <!-- Display movie titles -->
+        <div id="movieList">
+            <!-- Movie titles will be displayed here -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
