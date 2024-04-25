@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listener for form submission
     addMovieForm.addEventListener('submit', addMovie);
 
-
+ 
 
     // Drag and Drop functionality
     dragDropZone.addEventListener('dragover', (event) => {
