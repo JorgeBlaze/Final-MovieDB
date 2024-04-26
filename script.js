@@ -2,10 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const addMovieForm = document.getElementById('addMovieForm');
     const movieList = document.getElementById('movieList');
 
-    // Function to fetch movies from the backend and display them
+    // function to fetch movies  and display them
     const fetchMovies = async () => {
         try {
-            console.log('Fetching movies...'); // Log fetching movies
+            console.log('Fetching movies...'); 
             const response = await fetch('http://localhost:8000/movies/');
             if (!response.ok) {
                 throw new Error('Failed to fetch movies');
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const movies = await response.json();
             console.log('Fetched movies:', movies); // Log fetched movies
             
-            movieList.innerHTML = ''; // Clear previous movie list
+            movieList.innerHTML = ''; 
 
             movies.forEach(movie => {
                 renderMovieItem(movie);
@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Function to render a movie item
     const renderMovieItem = (movie) => {
         const movieItem = document.createElement('div');
         movieItem.innerHTML = `
@@ -43,14 +42,14 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         movieList.appendChild(movieItem);
 
-        // Bind edit button click event
+        // bind edit button click event
         const editButton = movieItem.querySelector('.edit-button');
         editButton.addEventListener('click', () => {
             editMovie(movie.id);
         });
     };
 
-    // Function to handle movie addition
+    // function to handle movie addition
     const addMovie = async (event) => {
         event.preventDefault();
 
@@ -79,15 +78,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error('Failed to add movie');
             }
 
-            fetchMovies(); // Refresh movie list after addition
-            addMovieForm.reset(); // Clear form inputs
+            fetchMovies(); // refresh movie  list after addition
+            addMovieForm.reset(); // clear  inputs
         } catch (error) {
             console.error('Error adding movie:', error);
         }
     };
 
     
-    // Function to handle movie update
+    // function to handle movie update
     const updateMovie = async (movieId) => {
         const movieName = document.getElementById(`editName-${movieId}`).value;
         const movieYear = document.getElementById(`editYear-${movieId}`).value;
@@ -114,13 +113,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error('Failed to update movie');
             }
 
-            fetchMovies(); // Refresh movie list after update
+            fetchMovies(); // refresh movie lisct after update
         } catch (error) {
             console.error('Error:', error);
         }
     };
 
-    // Function to delete a movie
+    // function to delete a movie
     const deleteMovie = async (movieId) => {
         try {
             const response = await fetch(`http://localhost:8000/movies/${movieId}`, {
@@ -131,13 +130,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error('Failed to delete movie');
             }
     
-            fetchMovies(); // Refresh movie list after deletion
+            fetchMovies(); // refresh movie list after deletion
         } catch (error) {
             console.error('Error:', error);
         }
     };
 
-    // Function to toggle edit form display
+    // function to toggle edit form display
     const editMovie = (movieId) => {
         const editForm = document.getElementById(`editForm-${movieId}`);
         editForm.style.display = editForm.style.display === 'none' ? 'block' : 'none';
@@ -161,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
  
 
-    // Drag and Drop functionality
+    //   drag anddrop 
     dragDropZone.addEventListener('dragover', (event) => {
         event.preventDefault();
         dragDropZone.classList.add('dragging');
@@ -201,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     throw new Error('Failed to add movie');
                 }
 
-                fetchMovies(); // Refresh movie list after addition
+                fetchMovies(); // refresh movie list 
             } catch (error) {
                 console.error('Error:', error);
             }
@@ -211,6 +210,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // Fetch and display initial movie list
+    // fetch and display initial movie list
     fetchMovies();
 });
